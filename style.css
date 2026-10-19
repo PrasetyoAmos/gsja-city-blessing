@@ -600,3 +600,17 @@ footer{display:block;padding:80px 4.5% 28px;border-top:1px solid var(--line)}
 .wa-card .clink{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff44;padding-top:20px;margin-top:10px;font-size:14px;font-weight:600}
 .wa-card .clink b{font-size:20px;font-weight:500;transition:transform .4s}.wa-card:hover .clink b{transform:translate(4px,-4px)}
 .person .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}.person:hover .avatar img{transform:scale(1.05)}
+/* pemilih bahasa + huruf CJK */
+.lang-select{appearance:none;-webkit-appearance:none;height:44px;padding:0 30px 0 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%238f9aae' stroke-width='1.6'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 12px center;color:var(--text);font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .3s}
+.lang-select:hover,.lang-select:focus-visible{border-color:var(--accent);outline:none}
+.lang-select option{color:#111;background:#fff}
+:lang(zh),:lang(ko){--head:"Hanken Grotesk","PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC","Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR",sans-serif}
+:lang(zh) body{font-family:"Hanken Grotesk","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif}
+:lang(ko) body{font-family:"Hanken Grotesk","Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR","Noto Sans KR",sans-serif}
+:lang(zh) h1,:lang(zh) h2,:lang(zh) h3,:lang(zh) h4,:lang(ko) h1,:lang(ko) h2,:lang(ko) h3,:lang(ko) h4,:lang(zh) .brand b,:lang(ko) .brand b{letter-spacing:0!important;line-height:1.25;word-break:keep-all}
+:lang(zh) .eyebrow,:lang(ko) .eyebrow,:lang(zh) .tag,:lang(ko) .tag,:lang(zh) small,:lang(ko) small{letter-spacing:.06em}
+:lang(zh) p,:lang(ko) p{line-height:1.8}:lang(ko) p{word-break:keep-all}
+@media (max-width:1020px){.lang-select{height:40px;padding-left:12px}}
+@media (max-width:640px){.header{gap:8px}.brand{gap:8px;min-width:0}.brand-logo{width:42px;height:42px}.brand b{font-size:16px}.brand small{display:none}.lang-select{height:40px;width:68px;padding:0 20px 0 10px;font-size:12px;background-position:right 7px center}.icon-button{width:40px;height:40px}}
+:lang(zh) body,:lang(ko) body{overflow-wrap:anywhere}
+:lang(zh) .header,:lang(ko) .header{overflow:hidden}
