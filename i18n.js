@@ -43,7 +43,12 @@
   function apply(){
     document.documentElement.lang=HL[cur];document.documentElement.setAttribute('data-lang',cur);
     walk(document.body);head();
-    var sel=document.querySelector('.lang-select');if(sel)sel.value=cur;
+    sync();
+  }
+  var CODE={id:'ID',en:'EN',zh:'中文',ko:'한국어'};
+  function sync(){
+    var c=document.querySelector('.lang-cur');if(c)c.textContent=CODE[cur];
+    document.querySelectorAll('.lang-opt').forEach(function(b){b.setAttribute('aria-checked',b.getAttribute('data-l')===cur?'true':'false')});
   }
   function set(l){
     if(LANGS.indexOf(l)<0)return;
@@ -53,7 +58,24 @@
     var s=document.createElement('script');s.src='lang/'+l+'.js';s.onload=go;s.onerror=function(){};document.head.appendChild(s);
   }
   window.GSJA_I18N={set:set,get:function(){return cur}};
-  var sel=document.querySelector('.lang-select');if(sel)sel.addEventListener('change',function(){set(sel.value)});
+  var box=document.querySelector('.lang'),btn=box&&box.querySelector('.lang-btn');
+  if(box){
+    var opts=[].slice.call(box.querySelectorAll('.lang-opt'));
+    var open=function(v,focus){box.classList.toggle('open',v);btn.setAttribute('aria-expanded',v?'true':'false');
+      if(v&&focus){var a=box.querySelector('.lang-opt[aria-checked=true]')||opts[0];setTimeout(function(){a.focus()},30)}};
+    btn.addEventListener('click',function(){open(!box.classList.contains('open'),false)});
+    btn.addEventListener('keydown',function(e){if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();open(true,true)}});
+    opts.forEach(function(o,i){
+      o.addEventListener('click',function(){set(o.getAttribute('data-l'));open(false);btn.focus()});
+      o.addEventListener('keydown',function(e){
+        if(e.key==='ArrowDown'){e.preventDefault();opts[(i+1)%opts.length].focus()}
+        else if(e.key==='ArrowUp'){e.preventDefault();opts[(i-1+opts.length)%opts.length].focus()}
+        else if(e.key==='Escape'||e.key==='Tab'){open(false);if(e.key==='Escape')btn.focus()}
+      });
+    });
+    document.addEventListener('click',function(e){if(!box.contains(e.target))open(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')open(false)});
+  }
   new MutationObserver(function(ms){
     if(busy||cur==='id')return;
     ms.forEach(function(m){

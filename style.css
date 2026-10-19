@@ -601,16 +601,37 @@ footer{display:block;padding:80px 4.5% 28px;border-top:1px solid var(--line)}
 .wa-card .clink b{font-size:20px;font-weight:500;transition:transform .4s}.wa-card:hover .clink b{transform:translate(4px,-4px)}
 .person .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}.person:hover .avatar img{transform:scale(1.05)}
 /* pemilih bahasa + huruf CJK */
-.lang-select{appearance:none;-webkit-appearance:none;height:44px;padding:0 30px 0 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%238f9aae' stroke-width='1.6'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 12px center;color:var(--text);font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .3s}
-.lang-select:hover,.lang-select:focus-visible{border-color:var(--accent);outline:none}
-.lang-select option{color:#111;background:#fff}
 :lang(zh),:lang(ko){--head:"Hanken Grotesk","PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC","Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR",sans-serif}
 :lang(zh) body{font-family:"Hanken Grotesk","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",sans-serif}
 :lang(ko) body{font-family:"Hanken Grotesk","Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR","Noto Sans KR",sans-serif}
 :lang(zh) h1,:lang(zh) h2,:lang(zh) h3,:lang(zh) h4,:lang(ko) h1,:lang(ko) h2,:lang(ko) h3,:lang(ko) h4,:lang(zh) .brand b,:lang(ko) .brand b{letter-spacing:0!important;line-height:1.25;word-break:keep-all}
 :lang(zh) .eyebrow,:lang(ko) .eyebrow,:lang(zh) .tag,:lang(ko) .tag,:lang(zh) small,:lang(ko) small{letter-spacing:.06em}
 :lang(zh) p,:lang(ko) p{line-height:1.8}:lang(ko) p{word-break:keep-all}
-@media (max-width:1020px){.lang-select{height:40px;padding-left:12px}}
-@media (max-width:640px){.header{gap:8px}.brand{gap:8px;min-width:0}.brand-logo{width:42px;height:42px}.brand b{font-size:16px}.brand small{display:none}.lang-select{height:40px;width:68px;padding:0 20px 0 10px;font-size:12px;background-position:right 7px center}.icon-button{width:40px;height:40px}}
 :lang(zh) body,:lang(ko) body{overflow-wrap:anywhere}
-:lang(zh) .header,:lang(ko) .header{overflow:hidden}
+
+/* pemilih bahasa v2 */
+.lang{position:relative}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px 0 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit;font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:border-color .3s,background .3s,transform .3s}
+.lang-btn:hover,.lang.open .lang-btn,.lang-btn:focus-visible{border-color:var(--accent);outline:none}
+.lang-btn svg:first-child{color:var(--accent);transition:transform .6s cubic-bezier(.2,.7,.1,1)}
+.lang-btn:hover svg:first-child,.lang.open .lang-btn svg:first-child{transform:rotate(90deg)}
+.lang-chev{opacity:.6;transition:transform .35s}.lang.open .lang-chev{transform:rotate(180deg)}
+.lang-panel{position:absolute;right:0;top:calc(100% + 14px);width:318px;padding:10px;border-radius:26px;background:var(--panel);border:1px solid var(--line);box-shadow:0 30px 70px -18px rgba(0,0,0,.55);z-index:50;visibility:hidden;opacity:0;transform:translateY(-10px) scale(.96);transform-origin:top right;transition:opacity .25s,transform .35s cubic-bezier(.2,.9,.2,1),visibility 0s .35s}
+.lang.open .lang-panel{visibility:visible;opacity:1;transform:none;transition:opacity .25s,transform .35s cubic-bezier(.2,.9,.2,1),visibility 0s}
+.lang-cap{margin:6px 12px 10px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lang-opt{width:100%;display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:18px;border:1px solid transparent;background:transparent;color:var(--text);font:inherit;text-align:left;cursor:pointer;opacity:0;transform:translateY(8px);transition:background .25s,border-color .25s}
+.lang.open .lang-opt{opacity:1;transform:none;transition:background .25s,border-color .25s,opacity .4s calc(var(--i)*55ms + 80ms),transform .45s cubic-bezier(.2,.9,.2,1) calc(var(--i)*55ms + 80ms)}
+.lang-opt:hover,.lang-opt:focus-visible{background:var(--bg2);outline:none}
+.lang-opt[aria-checked=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.lang-mono{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--bg2);font-weight:800;font-size:15px;letter-spacing:.02em;transition:background .3s,color .3s,transform .4s cubic-bezier(.2,.9,.2,1)}
+.lang-opt:hover .lang-mono{transform:scale(1.08) rotate(-6deg)}
+.lang-opt[aria-checked=true] .lang-mono{background:var(--accent);color:#fff}
+.lang-opt[lang=zh] .lang-mono,.lang-opt[lang=ko] .lang-mono{font-size:20px;font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.lang-txt{flex:1;min-width:0}.lang-txt b{display:block;font-size:16px;font-weight:700;letter-spacing:-.01em}
+.lang-txt small{display:block;margin-top:2px;font-size:12px;color:var(--muted);letter-spacing:0!important}
+.lang-ck{flex:none;color:var(--accent);opacity:0;transform:scale(.4);transition:opacity .25s,transform .35s cubic-bezier(.2,1.4,.4,1)}
+.lang-opt[aria-checked=true] .lang-ck{opacity:1;transform:none}
+@media (max-width:1020px){.lang-btn{height:40px;padding:0 10px}}
+@media (max-width:640px){.header{gap:8px}.brand{gap:8px;min-width:0}.brand-logo{width:42px;height:42px}.brand b{font-size:16px}.brand small{display:none}.icon-button{width:40px;height:40px}
+ .lang{position:static}.lang-cur{font-size:12px}.lang-panel{left:12px;right:12px;width:auto;top:calc(100% + 8px);transform-origin:top center}}
+@media (prefers-reduced-motion:reduce){.lang-panel,.lang-opt,.lang-btn svg{transition:none!important}}
