@@ -574,3 +574,15 @@ footer{display:block;padding:80px 4.5% 28px;border-top:1px solid var(--line)}
 .location-link{border-bottom:1px solid #555;color:#171717}
 .visit .button.primary{background:#171717;color:#fff}
 @media (max-width:1020px){.visit-address{border-left:0;border-top:1px solid #cfcbbd}}
+/* foto kartu generasi (zip terbaru) */
+.gen .gphoto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:.34;transition:transform 1s cubic-bezier(.2,.7,.1,1),opacity .5s}
+.gen:hover .gphoto{transform:scale(1.06);opacity:.5}
+.g3 .gphoto{opacity:.28}
+.gen h3,.gen p,.gen .tag{text-shadow:0 1px 14px #0006}.g3 h3,.g3 p,.g3 .tag{text-shadow:none}
+.phero.photo>img{opacity:.32}
+.phero.photo.c-teal:before,.phero.photo.c-cream:before{background:transparent}
+.phero.photo{--ph-fg:#fff;--ph-mut:#e4ecfa;--ph-eye:#b5d0ff;--ph-stroke:#ffffff22}
+.phero.photo.c-teal,.phero.photo.c-cream{--ph-fg:#fff;--ph-mut:#e4ecfa;--ph-eye:#9fe3ea}
+.phero.photo.c-teal{background:#06353b}
+.phero.photo>img{opacity:.4}
+.g3 .gphoto{opacity:.16}
