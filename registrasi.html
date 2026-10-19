@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#38002f">
+<title>Registrasi Anggota Jemaat — GSJA City Blessing</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#form-area">Lewati ke formulir</a>
+<header class="header"><div class="wrap">
+  <a class="brand" href="index.html" aria-label="GSJA City Blessing, beranda"><img src="assets/logo.png" alt=""><span><b>GSJA</b><small>CITY BLESSING</small></span></a>
+  <nav class="nav" aria-label="Navigasi utama"><a href="index.html#beranda">Beranda</a><a href="index.html#profil">Profil</a><a href="index.html#jadwal">Jadwal Ibadah</a><a href="index.html#layanan">Layanan</a><a href="index.html#struktur">Organisasi</a><a href="index.html#kegiatan">Kegiatan</a><a href="index.html#kontak">Kontak</a></nav>
+  <a class="btn btn-grad" href="registrasi.html" aria-current="page"><i class="fa-solid fa-user-plus"></i> Pendaftaran</a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+</div></header>
+<div id="mobile-menu" class="mobile-menu" hidden>
+  <a href="index.html#beranda">Beranda</a><a href="index.html#profil">Profil Gereja</a><a href="index.html#jadwal">Jadwal Ibadah</a><a href="index.html#layanan">Layanan</a><a href="index.html#kegiatan">Kegiatan</a><a href="index.html#kontak">Kontak</a>
+</div>
+
+<main>
+<section class="page-hero"><div class="wrap">
+  <span class="eyebrow light">Bergabung bersama kami</span>
+  <h1>Registrasi Jemaat</h1>
+  <p>Mari terhubung dan menjadi bagian dari keluarga jemaat kami yang bertumbuh.</p>
+</div></section>
+
+<section class="reg" id="form-area"><div class="reg-card">
+  <form id="reg-form" novalidate>
+    <div class="notice"><i class="fa-solid fa-circle-info" style="margin-top:3px"></i><span>Setelah dikirim, data Anda berstatus <b>menunggu konfirmasi admin</b>. ID jemaat dikirim ke email Anda setelah admin menyetujui.</span></div>
+
+    <fieldset class="fs" style="border:0;margin:0;min-inline-size:0">
+      <div class="fs-title"><span class="n"><i class="fa-solid fa-camera" style="font-size:16px"></i></span><h2>Foto Profil<small>Opsional · JPG, PNG, atau WEBP, maksimal 5 MB</small></h2></div>
+      <div class="photo-up">
+        <div class="photo-prev" id="photo-prev" aria-hidden="true"><i class="fa-solid fa-user"></i></div>
+        <div><label class="btn btn-outline" for="foto" style="margin:0;cursor:pointer"><i class="fa-solid fa-image"></i> Pilih Foto</label><input type="file" id="foto" name="foto" accept="image/jpeg,image/png,image/webp"><p class="hint" id="foto-hint">Pas foto jemaat, tampak wajah dengan jelas.</p></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="fs" style="border:0;margin:0;min-inline-size:0">
+      <div class="fs-title"><span class="n">1</span><h2>Data Personal</h2></div>
+      <div class="fields">
+        <div class="full"><label for="nama">Nama Lengkap <span class="req">*</span></label><input id="nama" name="nama" required autocomplete="name" placeholder="Sesuai identitas"></div>
+        <div><label for="nik">NIK / No. KTP <span class="opt">(opsional)</span></label><input id="nik" name="nik" inputmode="numeric" maxlength="16" placeholder="16 digit"></div>
+        <div><label for="jk">Jenis Kelamin <span class="req">*</span></label><select id="jk" name="jk" required><option value="">Pilih Jenis Kelamin</option><option>Laki-laki</option><option>Perempuan</option></select></div>
+        <div><label for="wa">No. WhatsApp / HP <span class="req">*</span></label><input id="wa" name="wa" type="tel" required autocomplete="tel" placeholder="0812xxxxxxxx"><p class="hint">Diperlukan untuk aplikasi gereja.</p></div>
+        <div><label for="tl">Tempat Lahir <span class="req">*</span></label><input id="tl" name="tl" required placeholder="Kota kelahiran"></div>
+        <div><label for="tgl">Tanggal Lahir <span class="req">*</span></label><input id="tgl" name="tgl" type="date" required></div>
+        <div><label for="email">Email Aktif <span class="req">*</span></label><input id="email" name="email" type="email" required autocomplete="email" placeholder="email@example.com"><p class="hint">Status registrasi dan ID jemaat dikirim ke sini.</p></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="fs" style="border:0;margin:0;min-inline-size:0">
+      <div class="fs-title"><span class="n">2</span><h2>Alamat &amp; Domisili</h2></div>
+      <div class="fields">
+        <div><label for="prov">Provinsi <span class="req">*</span></label><select id="prov" name="prov" required><option value="">Memuat Provinsi…</option></select></div>
+        <div><label for="kota">Kabupaten / Kota <span class="req">*</span></label><select id="kota" name="kota" required disabled><option value="">Pilih Provinsi Dahulu</option></select></div>
+        <div><label for="kec">Kecamatan <span class="req">*</span></label><select id="kec" name="kec" required disabled><option value="">Pilih Kota Dahulu</option></select></div>
+        <div><label for="kel">Kelurahan / Desa <span class="req">*</span></label><select id="kel" name="kel" required disabled><option value="">Pilih Kecamatan Dahulu</option></select></div>
+        <div class="full"><label for="alamat">Alamat Lengkap Jalan / RT / RW <span class="req">*</span></label><input id="alamat" name="alamat" required autocomplete="street-address" placeholder="Jl. …, RT 00 / RW 00, No. …"></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="fs" style="border:0;margin:0;min-inline-size:0">
+      <div class="fs-title"><span class="n">3</span><h2>Anggota Keluarga<small>Opsional · pasangan atau anak yang tinggal serumah</small></h2></div>
+      <div class="list-rows" id="fam-list"></div>
+      <button type="button" class="add" id="add-fam"><i class="fa-solid fa-plus"></i> Tambah Anggota Keluarga</button>
+    </fieldset>
+
+    <fieldset class="fs" style="border:0;margin:0;min-inline-size:0">
+      <div class="fs-title"><span class="n">4</span><h2>Minat Pelayanan<small>Opsional · bagikan talenta yang ingin Anda layani</small></h2></div>
+      <div class="list-rows" id="min-list"></div>
+      <button type="button" class="add" id="add-min"><i class="fa-solid fa-plus"></i> Tambah Minat Pelayanan / Talenta</button>
+    </fieldset>
+
+    <div class="submit-row">
+      <p>Dengan mengirim, Anda menyatakan data yang diisi benar. Data dipakai untuk administrasi jemaat GSJA City Blessing.</p>
+      <button class="btn btn-grad" type="submit"><i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran</button>
+    </div>
+  </form>
+
+  <div class="success" id="success" hidden>
+    <div class="ok"><i class="fa-solid fa-check"></i></div>
+    <h2>Pendaftaran Diterima!</h2>
+    <p>Terima kasih, <b id="ok-name"></b>. Data Anda sudah kami catat dan sedang diperiksa oleh admin.</p>
+    <span class="status-pill"><i class="fa-solid fa-hourglass-half"></i> Menunggu Konfirmasi Admin</span>
+    <p>ID jemaat akan dikirim ke <b id="ok-mail"></b> setelah disetujui.</p>
+    <a class="btn btn-grad" href="index.html">Kembali ke Beranda</a>
+  </div>
+</div>
+<p class="proto-note">Prototipe desain · formulir belum terhubung ke server, dan data wilayah di atas hanya contoh.</p>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div class="row"><a class="brand" href="index.html"><img src="assets/logo.png" alt=""><span><b>GSJA</b><small>CITY BLESSING</small></span></a>
+  <nav class="links" aria-label="Footer"><a href="index.html#beranda">Beranda</a><a href="index.html#jadwal">Jadwal</a><a href="index.html#kegiatan">Kegiatan</a><a href="index.html#kontak">Kontak</a></nav></div>
+  <div class="copy"><span>© 2026 GSJA City Blessing. Impacting Lives, Transforming Cities.</span><span>Prototipe desain</span></div>
+</div></footer>
+<script src="registrasi.js"></script>
+</body>
+</html>
