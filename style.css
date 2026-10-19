@@ -586,3 +586,14 @@ footer{display:block;padding:80px 4.5% 28px;border-top:1px solid var(--line)}
 .g3 .clink{border-color:#05262a44}
 .phero-art{position:absolute;width:min(520px,60vw);height:auto;right:2%;top:50%;transform:translateY(-50%) rotate(-8deg);color:#fff;opacity:.14;pointer-events:none}
 .c-teal .phero-art{color:#05262a;opacity:.18}
+
+/* kartu WhatsApp (pengganti formulir) */
+.wa-cards{display:grid;gap:20px}
+.wa-card{position:relative;display:flex;flex-direction:column;gap:14px;padding:34px;border-radius:20px;color:#fff;overflow:hidden;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
+.wa-card:hover{transform:translateY(-6px)}
+.wa-card .tag{font-size:11px;letter-spacing:.16em;font-weight:700;opacity:.8}
+.wa-card h3{font-size:clamp(26px,2.6vw,36px);letter-spacing:-.03em}
+.wa-card p{color:#e3ecfb;max-width:440px}
+.wa-doa{background:var(--blue)}.wa-info{background:var(--blue3);border:1px solid #ffffff22}
+.wa-card .clink{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff44;padding-top:20px;margin-top:10px;font-size:14px;font-weight:600}
+.wa-card .clink b{font-size:20px;font-weight:500;transition:transform .4s}.wa-card:hover .clink b{transform:translate(4px,-4px)}
