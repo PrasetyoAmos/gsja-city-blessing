@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "gathering-kaum-pria",
+      "judul": "Gathering Kaum Pria",
+      "tanggal": "2026-08-22",
+      "tempat": "Bukit Doa Salomo, Depok",
+      "foto": "assets/gathering.jpg",
+      "kategori": "KEBERSAMAAN",
+      "alt": "Gathering Kaum Pria Integritas se-Banten",
+      "isi": "Gathering Kaum Pria Integritas se-Banten dirayakan pada hari Sabtu, 22 Agustus 2026, di Bukit Doa Salomo, Jl. Jambu No. 35, Depok, Jawa Barat.\n\nAcara dihadiri gereja-gereja GSJA dari seluruh wilayah Banten. Keseruan dan kekeluargaan yang dibina menambah kebersamaan.\n\nSemoga GSJA bersatu, gereja pasti maju!",
+      "beranda": true,
+      "terbit": true,
+      "t": {}
+    },
+    {
+      "id": "hut-ri-81",
+      "judul": "Kemerdekaan HUT ke-81",
+      "judul_beranda": "Merayakan Kemerdekaan",
+      "tanggal": "2026-08-17",
+      "tempat": "GSJA City Blessing",
+      "foto": "assets/independence.jpg",
+      "kategori": "CERITA KOMUNITAS",
+      "alt": "Perayaan HUT RI ke-81 bersama jemaat",
+      "isi": "Keseruan HUT RI ke-81 di GSJA City Blessing menambah keharmonisan dan kekeluargaan jemaat, dan pastinya kebersamaan yang menyenangkan.",
+      "beranda": true,
+      "terbit": true,
+      "t": {}
+    }
+  ]
+}

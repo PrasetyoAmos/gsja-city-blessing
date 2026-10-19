@@ -44,6 +44,7 @@
     document.documentElement.lang=HL[cur];document.documentElement.setAttribute('data-lang',cur);
     walk(document.body);head();
     sync();
+    try{document.dispatchEvent(new Event('gsja-lang'))}catch(e){}
   }
   var CODE={id:'ID',en:'EN',zh:'中文',ko:'한국어'};
   function sync(){

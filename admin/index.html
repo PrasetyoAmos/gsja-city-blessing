@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0f2d5c">
+<title>CMS — GSJA City Blessing</title><link rel="icon" href="../assets/logo.png">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('gsja-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="admin.css"></head>
+<body class="adm">
+<main id="login" hidden>
+  <form id="login-form" class="lcard" autocomplete="off">
+    <img src="../assets/logo.png" alt="" class="llogo">
+    <h1>CMS GSJA City Blessing</h1>
+    <p class="muted">Kelola jadwal, kegiatan, tim pelayan, dan teks situs. Masuk dengan token GitHub Anda.</p>
+    <label class="fld"><span class="fld-l">Repo GitHub</span><input id="l-repo" type="text" spellcheck="false" placeholder="pemilik/nama-repo"></label>
+    <label class="fld"><span class="fld-l">Branch</span><input id="l-branch" type="text" value="main" spellcheck="false"></label>
+    <label class="fld"><span class="fld-l">Token akses GitHub</span><input id="l-token" type="password" spellcheck="false" autocomplete="new-password" placeholder="github_pat_…"></label>
+    <label class="chk"><input id="l-remember" type="checkbox" checked><span>Ingat saya di perangkat ini</span></label>
+    <p id="l-err" class="err" role="alert"></p>
+    <button id="l-go" class="btn primary wide" type="submit">Masuk</button>
+    <details class="how"><summary>Belum punya token? Begini cara membuatnya</summary>
+      <ol>
+        <li>Buka <b>github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</b>.</li>
+        <li><b>Repository access</b>: pilih <i>Only select repositories</i> → repo situs ini saja.</li>
+        <li><b>Permissions → Repository permissions → Contents</b>: pilih <i>Read and write</i>.</li>
+        <li>Atur masa berlaku (mis. 90 hari), klik <b>Generate token</b>, salin, tempel di atas.</li>
+      </ol>
+      <p class="muted small">Token hanya disimpan di browser ini dan hanya dikirim ke api.github.com. Jangan bagikan token. Siapa pun yang punya token dapat mengubah isi situs; cabut di GitHub bila perangkat hilang.</p>
+    </details>
+  </form>
+</main>
+
+<div id="app" class="shell" hidden>
+  <aside class="side">
+    <a class="brand" href="../index.html" target="_blank" rel="noopener"><img class="brand-logo" src="../assets/logo.png" alt=""><span><b>CITY BLESSING</b><small>PANEL KONTEN</small></span></a>
+    <nav id="nav" class="nav" aria-label="Menu CMS"></nav>
+    <div class="side-f"><span id="who" class="muted"></span><button id="btn-out" class="btn ghost sm" type="button">Keluar</button></div>
+  </aside>
+  <div class="main">
+    <header class="top">
+      <button id="btn-menu" class="ib menu" type="button" aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <span class="top-s muted">Draf tersimpan otomatis di perangkat ini</span>
+      <span class="top-a">
+        <button id="btn-theme" class="ib" type="button"></button>
+        <button id="btn-preview" class="btn" type="button">Pratinjau</button>
+        <button id="btn-publish" class="btn primary" type="button" disabled>Publikasikan <b id="chg" class="cnt" hidden>0</b></button>
+      </span>
+    </header>
+    <section id="view" class="view" aria-live="polite"></section>
+  </div>
+</div>
+
+<dialog id="dlg-preview" class="pv">
+  <div class="pv-bar">
+    <select id="pv-page" aria-label="Halaman"><option value="index.html">Beranda</option><option value="ibadah.html">Ibadah</option><option value="kegiatan.html">Kegiatan</option><option value="berita">Artikel berita</option><option value="tentang.html">Tentang</option><option value="kontak.html">Kontak</option></select>
+    <span id="pv-dev" class="seg"><button data-d="desktop" type="button">Desktop</button><button data-d="tablet" type="button">Tablet</button><button data-d="mobile" type="button">HP</button></span>
+    <span id="pv-lang" class="seg"><button data-l="id" type="button">ID</button><button data-l="en" type="button">EN</button><button data-l="zh" type="button">中文</button><button data-l="ko" type="button">한국어</button></span>
+    <button class="btn sm" data-close type="button">Tutup</button>
+  </div>
+  <div class="pv-stage"><iframe id="pv-frame" title="Pratinjau situs"></iframe></div>
+</dialog>
+
+<dialog id="dlg-media" class="dlg">
+  <div class="dlg-h"><h2>Pilih foto</h2><button class="ib" data-close type="button" aria-label="Tutup">×</button></div>
+  <label class="btn primary up"><input id="media-up" type="file" accept="image/*" multiple hidden>Unggah foto baru</label>
+  <div id="media-grid" class="mpick"></div>
+</dialog>
+
+<dialog id="dlg-pub" class="dlg sm">
+  <div class="dlg-h"><h2>Publikasikan perubahan</h2><button class="ib" data-close type="button" aria-label="Tutup">×</button></div>
+  <ul id="pub-sum" class="sum"></ul>
+  <div id="pub-errbox" class="errbox" hidden><b>Perbaiki dulu:</b><ul id="pub-err"></ul></div>
+  <label class="fld"><span class="fld-l">Catatan perubahan (opsional)</span><input id="pub-msg" type="text"></label>
+  <p id="pub-prog" class="muted small" role="status"></p>
+  <div class="dlg-f"><button class="btn ghost" data-close type="button">Batal</button><button id="pub-go" class="btn primary" type="button">Publikasikan sekarang</button></div>
+</dialog>
+<div id="toasts" aria-live="polite"></div>
+<script src="admin.js"></script>
+</body></html>

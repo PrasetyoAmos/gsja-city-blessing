@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "id": "samuel-darmanto",
+      "nama": "Pdt. Samuel Darmanto",
+      "jabatan": "Senior Pastor",
+      "bio": "Melayani dengan fokus pada pengajaran firman dan kepemimpinan transformasional.",
+      "foto": "assets/samuel.jpg",
+      "t": {}
+    },
+    {
+      "id": "grace-darmanto",
+      "nama": "Pdp. Grace Darmanto",
+      "jabatan": "Gembala Sidang",
+      "bio": "Berfokus pada pembinaan jemaat dan kaum wanita, doa syafaat, dan konseling keluarga.",
+      "foto": "assets/grace.jpg",
+      "t": {}
+    },
+    {
+      "id": "natan-prasetya",
+      "nama": "Pi. Natan Prasetya",
+      "jabatan": "Staff Pastoral",
+      "bio": "Mengarahkan generasi muda.",
+      "foto": "assets/natan.jpg",
+      "t": {}
+    },
+    {
+      "id": "samuel-rendra",
+      "nama": "Pdp. Samuel Rendra",
+      "jabatan": "Sekretaris",
+      "bio": "Administrasi gereja.",
+      "foto": "",
+      "inisial": "SR",
+      "t": {}
+    }
+  ]
+}

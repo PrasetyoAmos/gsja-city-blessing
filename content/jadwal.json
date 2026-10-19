@@ -1,0 +1,68 @@
+{
+  "items": [
+    {
+      "id": "raya-1",
+      "nama": "Ibadah Raya I",
+      "hari": "Minggu",
+      "jam": "07.00",
+      "lokasi": "GSJA City Blessing, lantai 2",
+      "pelayan": "Gembala Sidang",
+      "ket": "Ibadah bersama jemaat",
+      "link": "ibadah.html",
+      "beranda": true,
+      "t": {}
+    },
+    {
+      "id": "raya-2",
+      "nama": "Ibadah Raya II",
+      "hari": "Minggu",
+      "jam": "09.15",
+      "lokasi": "GSJA City Blessing, lantai 2",
+      "pelayan": "Gembala Sidang",
+      "ket": "Temukan waktu untuk bertumbuh",
+      "link": "ibadah.html",
+      "beranda": true,
+      "t": {}
+    },
+    {
+      "id": "youth",
+      "nama": "Youth & Campus Ministry",
+      "nama_beranda": "Youth & Campus",
+      "hari": "Sabtu",
+      "jam": "17.00",
+      "lokasi": "Youth Hall, lantai 2",
+      "pelayan": "Pdt. Samuel Rendra",
+      "ket": "Bersama generasi muda",
+      "link": "youth.html",
+      "beranda": true,
+      "t": {}
+    },
+    {
+      "id": "kids-1",
+      "nama": "Sekolah Minggu Kids",
+      "hari": "Minggu",
+      "jam": "07.00",
+      "lokasi": "Kids Room, lantai 2",
+      "pelayan": "Sdr. Lely Grafy",
+      "ket": "Untuk anak-anak",
+      "link": "kids.html",
+      "beranda": true,
+      "t": {},
+      "nama_beranda": "Sekolah Minggu",
+      "jam_beranda": "07.00 & 09.15",
+      "ket_beranda": "Setiap Minggu untuk anak-anak"
+    },
+    {
+      "id": "kids-2",
+      "nama": "Sekolah Minggu Kids 2",
+      "hari": "Minggu",
+      "jam": "09.15",
+      "lokasi": "Kids Room, lantai 2",
+      "pelayan": "Sdr. Lely Grafy",
+      "ket": "Untuk anak-anak",
+      "link": "kids.html",
+      "beranda": false,
+      "t": {}
+    }
+  ]
+}

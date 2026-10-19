@@ -1,0 +1,54 @@
+{
+  "slides": [
+    {
+      "eyebrow": "SELAMAT DATANG DI RUMAH TUHAN",
+      "baris1": "Ada tempat untuk",
+      "baris2": "Anda di sini.",
+      "sub": "Bertumbuh dalam iman. Bersekutu dalam kasih.",
+      "tombol1": "Saya Baru di Sini",
+      "link1": "ibadah.html",
+      "tombol2": "Kenali Kami",
+      "link2": "tentang.html",
+      "t": {}
+    },
+    {
+      "eyebrow": "SATU IMAN. SATU KELUARGA.",
+      "baris1": "Hidup bersama.",
+      "baris2": "Berdampak bersama.",
+      "sub": "Temukan komunitas dan langkah berikutnya dalam iman.",
+      "tombol1": "Temukan Komunitas",
+      "link1": "generasi.html",
+      "tombol2": "Lihat Kegiatan",
+      "link2": "kegiatan.html",
+      "foto": "assets/gathering.jpg",
+      "t": {}
+    }
+  ],
+  "quick": [
+    {
+      "label": "Ibadah Raya",
+      "nilai": "Minggu · 07.00 & 09.15 WIB",
+      "t": {}
+    },
+    {
+      "label": "Youth & Campus",
+      "nilai": "Sabtu · 17.00 WIB",
+      "t": {}
+    },
+    {
+      "label": "Lokasi",
+      "nilai": "Teluknaga, Tangerang",
+      "t": {}
+    }
+  ],
+  "kata": [
+    {
+      "teks": "IMPACTING LIVES",
+      "t": {}
+    },
+    {
+      "teks": "TRANSFORMING CITIES",
+      "t": {}
+    }
+  ]
+}
