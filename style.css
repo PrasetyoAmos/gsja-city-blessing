@@ -1,9 +1,11 @@
+@font-face{font-family:"Hanken Grotesk";font-style:normal;font-weight:100 900;font-display:swap;src:url(assets/fonts/hanken-grotesk-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Hanken Grotesk";font-style:normal;font-weight:100 900;font-display:swap;src:url(assets/fonts/hanken-grotesk-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* GSJA City Blessing — gaya Elevation. Dominan biru (pengganti oranye), pendamping hijau, tosca, krem, hitam. Mode gelap & terang */
 :root{
   color-scheme:dark;
   --bg:#0b0d12;--bg2:#141821;--panel:#1a1f2a;--line:rgba(255,255,255,.13);
-  --text:#f3f5f9;--muted:#a3adbf;--faint:#707b8f;
-  --blue:#1b4fd8;--blue2:#1539a4;--blue3:#0a2147;--green:#5c7e32;--teal:#07a4b3;--cream:#f0eee6;--ink:#171717;--black:#0d0d0d;--sky:#9fc4ff;--blue-deep:#0a2147;
+  --text:#f3f5f9;--muted:#a3adbf;--faint:#8f9aae;
+  --blue:#1b4fd8;--blue2:#1539a4;--blue3:#0a2147;--green:#4d6c28;--teal:#07a4b3;--cream:#f0eee6;--ink:#171717;--black:#0d0d0d;--sky:#9fc4ff;--blue-deep:#0a2147;
   --accent:#6b9bff;--header:rgba(11,13,18,.94);--focus:#6b9bff;
   --btn-bg:#1b4fd8;--btn-text:#fff;--field:#141821;--field-line:rgba(255,255,255,.2);--error:#ff8aa6;
   --font:'Hanken Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;--head:'Hanken Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -11,19 +13,19 @@
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
   color-scheme:light;
   --bg:#f4f6fa;--bg2:#e8edf5;--panel:#ffffff;--line:rgba(10,20,40,.14);
-  --text:#0c1424;--muted:#4c5a72;--faint:#7a879d;
+  --text:#0c1424;--muted:#4c5a72;--faint:#5d6a80;
   --accent:#1d4ed8;--header:rgba(244,246,250,.95);--focus:#1d4ed8;
   --btn-bg:#1539a4;--field:#fff;--field-line:rgba(10,20,40,.25);--error:#b3173f;}}
 :root[data-theme="light"]{
   color-scheme:light;
   --bg:#f4f6fa;--bg2:#e8edf5;--panel:#ffffff;--line:rgba(10,20,40,.14);
-  --text:#0c1424;--muted:#4c5a72;--faint:#7a879d;
+  --text:#0c1424;--muted:#4c5a72;--faint:#5d6a80;
   --accent:#1d4ed8;--header:rgba(244,246,250,.95);--focus:#1d4ed8;
   --btn-bg:#1539a4;--field:#fff;--field-line:rgba(10,20,40,.25);--error:#b3173f;}
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#0b0d12;--bg2:#141821;--panel:#1a1f2a;--line:rgba(255,255,255,.13);
-  --text:#f3f5f9;--muted:#a3adbf;--faint:#707b8f;
+  --text:#f3f5f9;--muted:#a3adbf;--faint:#8f9aae;
   --accent:#6b9bff;--header:rgba(11,13,18,.94);--focus:#6b9bff;
   --btn-bg:#1b4fd8;--field:#141821;--field-line:rgba(255,255,255,.2);--error:#ff8aa6;}
 
@@ -47,7 +49,7 @@ h3{font-size:24px}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .brand-logo{width:54px;height:54px;border-radius:50%;background:#fff;padding:2px;object-fit:contain}
 .brand b{display:block;font-family:var(--head);font-size:19px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
-.brand small{display:block;font-size:8px;letter-spacing:.22em;color:var(--muted);margin-top:3px}
+.brand small{display:block;font-size:10px;letter-spacing:.14em;color:var(--muted);margin-top:3px}
 .header nav{display:flex;gap:28px;margin-left:auto;font-size:14px}
 .header nav a{position:relative;color:var(--muted);transition:color .2s}
 .header nav a:hover,.header nav a.on{color:var(--text)}
@@ -79,7 +81,7 @@ h3{font-size:24px}
 .hero-art{position:absolute;top:9%;left:5%;font-family:var(--head);font-weight:700;line-height:.95;letter-spacing:-.04em;font-size:clamp(40px,7.3vw,108px);color:rgba(255,255,255,.9)}
 .hero-art span{display:block}.hero-art span:last-child{color:var(--accent)}
 .hero-content{position:absolute;bottom:48px;left:4.5%;right:4.5%;display:flex;align-items:end;justify-content:space-between;gap:32px}
-.hero-content .eyebrow{margin-bottom:16px;color:#9fc4ff}
+.hero-content .eyebrow{margin-bottom:16px;color:#c9ddff}
 .hero-content h1,.hero-content h2{font-size:clamp(30px,3.6vw,54px);max-width:700px;font-weight:700}
 .hero-content p{color:#d6e0f0;margin-top:12px;font-size:17px;max-width:560px}
 .hero-actions{display:flex;gap:12px;flex-shrink:0}
@@ -167,27 +169,27 @@ h3{font-size:24px}
 /* registrasi CTA */
 .join{background:var(--blue);color:#fff;padding:90px 4.5%}
 .join-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:8%;align-items:center}
-.join .eyebrow{color:#9fc4ff;margin-bottom:22px}
+.join .eyebrow{color:#c9ddff;margin-bottom:22px}
 .join h2{font-size:clamp(34px,4.2vw,60px);letter-spacing:-.035em}
-.join p{color:#c6d5ee;margin-top:20px;max-width:520px}
+.join p{color:#e0eafb;margin-top:20px;max-width:520px}
 .join .button{margin-top:30px}
 .join ol{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .join li{display:flex;gap:16px;align-items:center;padding:18px 22px;border-radius:14px;background:#ffffff14;border:1px solid #ffffff24;font-size:15px}
 .join li b{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font-size:14px;flex-shrink:0}
 
 .visit{background:var(--blue-deep);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;gap:10%;align-items:center}
-.visit .eyebrow{color:#9fc4ff;margin-bottom:24px}
+.visit .eyebrow{color:#c9ddff;margin-bottom:24px}
 .visit h2{font-size:clamp(42px,5vw,72px);letter-spacing:-.04em}
 .visit p{color:#c6d5ee;font-size:16px;margin-top:20px}
 .visit-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:30px}
 .location-link{font-size:14px;border-bottom:1px solid #ffffff88}
 .visit-address{border-left:1px solid #ffffff33;padding-left:45px}
-.visit-address>span{font-size:10px;letter-spacing:.2em;color:#9fc4ff}
+.visit-address>span{font-size:10px;letter-spacing:.2em;color:#c9ddff}
 .visit-address h3{margin-top:22px;font-size:27px}
 .visit-address p{font-size:15px}
 .visit-contact{margin-top:18px;font-size:14px;color:#c6d5ee;display:grid;gap:4px}
 .visit-times{border-top:1px solid #ffffff33;margin-top:28px;padding-top:20px;display:flex;gap:30px;flex-wrap:wrap}
-.visit-times span{font-size:10px;color:#9fc4ff;letter-spacing:.12em}
+.visit-times span{font-size:10px;color:#c9ddff;letter-spacing:.12em}
 .visit-times b{display:block;color:#fff;font-size:14px;letter-spacing:0;margin-top:8px}
 
 footer{padding:60px 4.5% 25px;display:flex;align-items:center;gap:30px;flex-wrap:wrap;background:var(--bg)}
@@ -212,7 +214,7 @@ body.dialog-open{overflow:hidden}
 
 /* ===== registrasi ===== */
 .page-hero{background:var(--blue);color:#fff;padding:80px 4.5% 130px;text-align:center}
-.page-hero .eyebrow{color:#9fc4ff;margin-bottom:18px}
+.page-hero .eyebrow{color:#c9ddff;margin-bottom:18px}
 .page-hero h1{font-size:clamp(38px,5vw,64px);font-weight:700;letter-spacing:-.035em}
 .page-hero p{color:#c6d5ee;max-width:540px;margin:16px auto 0;font-size:18px}
 .reg{margin-top:-76px;padding:0 16px 100px;position:relative}
@@ -336,7 +338,7 @@ body{animation:pagein .6s cubic-bezier(.2,.7,.1,1) both}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* page hero (halaman dalam) */
-.phero{--ph-fg:#fff;--ph-mut:#d3e0fa;--ph-eye:#b5d0ff;--ph-stroke:#ffffff12;background:var(--blue);color:var(--ph-fg);padding:96px 4.5% 84px;position:relative;overflow:hidden}
+.phero{--ph-fg:#fff;--ph-mut:#e0eafb;--ph-eye:#d0e2ff;--ph-stroke:#ffffff12;background:var(--blue);color:var(--ph-fg);padding:96px 4.5% 84px;position:relative;overflow:hidden}
 .phero-in{max-width:1240px;margin:0 auto;position:relative;z-index:1}
 .crumbs{display:flex;gap:10px;font-size:13px;color:var(--ph-mut);margin-bottom:34px;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ph-fg)}.crumbs i{font-style:normal;opacity:.6}
@@ -548,11 +550,11 @@ footer{display:block;padding:80px 4.5% 28px;border-top:1px solid var(--line)}
 
 /* variasi warna per halaman / bagian */
 .c-blue{background:var(--blue)}.c-deep{background:var(--blue2)}.c-navy{background:var(--blue3)}.c-green{background:var(--green)}.c-black{background:var(--black)}
-.c-teal{background:var(--teal);--ph-fg:#05262a;--ph-mut:#0a4a52;--ph-eye:#06353b;--ph-stroke:#05262a14}
-.c-cream{background:var(--cream);--ph-fg:#171717;--ph-mut:#4d4d4d;--ph-eye:#1b4fd8;--ph-stroke:#17171712}
-.c-green{--ph-mut:#e3efd2;--ph-eye:#d5ebb2}
+.c-teal{background:var(--teal);--ph-fg:#05262a;--ph-mut:#04292d;--ph-eye:#04292d;--ph-stroke:#05262a14}
+.c-cream{background:var(--cream);--ph-fg:#171717;--ph-mut:#3d3d3d;--ph-eye:#1b4fd8;--ph-stroke:#17171712}
+.c-green{--ph-mut:#f1f7e8;--ph-eye:#e6f3cb}
 .g1{background:var(--blue2)}.g2{background:var(--green)}.g3{background:var(--teal);color:#05262a}.g4{background:var(--black);border:1px solid #ffffff2b}.g5{background:var(--blue)}
-.g3 p{color:#0a4a52}.g3 .ghost{-webkit-text-stroke-color:#05262a2e}.g3 .go{border-color:#05262a66}.g3:hover .go{background:#05262a;color:#fff}
+.g3 p{color:#04292d}.g3 .ghost{-webkit-text-stroke-color:#05262a2e}.g3 .go{border-color:#05262a66}.g3:hover .go{background:#05262a;color:#fff}
 .quick{background:var(--blue)}.quick small{color:#cfe0ff}
 .ev.invite .ph,.news-card.invite .ph{background:var(--blue)}
 .ev.invite em,.news-card.invite em,.invitation em{color:#cfe0ff}
@@ -567,10 +569,10 @@ footer{display:block;padding:80px 4.5% 28px;border-top:1px solid var(--line)}
 .join{background:var(--blue)}
 /* bagian kunjungan: krem seperti desain awal */
 .visit{background:var(--cream);color:var(--ink)}
-.visit .eyebrow{color:#1b4fd8}.visit p{color:#555}
-.visit-address{border-left:1px solid #cfcbbd}.visit-address>span{color:#777}
-.visit-address p{color:#555}
-.visit-times{border-top:1px solid #cfcbbd}.visit-times span{color:#777}.visit-times b{color:#171717}
+.visit .eyebrow{color:#1b4fd8}.visit p{color:#4a4a4a}
+.visit-address{border-left:1px solid #cfcbbd}.visit-address>span{color:#555}
+.visit-address p{color:#4a4a4a}
+.visit-times{border-top:1px solid #cfcbbd}.visit-times span{color:#555}.visit-times b{color:#171717}
 .location-link{border-bottom:1px solid #555;color:#171717}
 .visit .button.primary{background:#171717;color:#fff}
 @media (max-width:1020px){.visit-address{border-left:0;border-top:1px solid #cfcbbd}}
