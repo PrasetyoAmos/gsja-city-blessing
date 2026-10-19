@@ -1,13 +1,13 @@
 # Panduan CMS GSJA City Blessing
 
-Panel ada di **`/admin/`** (mis. `https://situs-anda/admin/`). Tidak butuh server: isi situs disimpan sebagai file JSON di folder `content/` pada repo GitHub, dan panel ini mengubah file tersebut lewat GitHub API.
+Panel ada di **`/ytta/`** (mis. `https://situs-anda/ytta/`). Tidak butuh server: isi situs disimpan sebagai file JSON di folder `content/` pada repo GitHub, dan panel ini mengubah file tersebut lewat GitHub API.
 
 ## 1. Masuk
 1. Di GitHub: **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
 2. **Repository access** → *Only select repositories* → pilih repo situs ini.
 3. **Permissions → Repository permissions → Contents → Read and write**.
 4. Pilih masa berlaku, **Generate token**, salin.
-5. Buka `/admin/`, isi `pemilik/nama-repo`, branch (`main`), tempel token, **Masuk**.
+5. Buka `/ytta/`, isi `pemilik/nama-repo`, branch (`main`), tempel token, **Masuk**.
 
 Token hanya disimpan di browser Anda dan hanya dikirim ke `api.github.com`. Siapa pun yang memegang token dapat mengubah situs; cabut token di GitHub bila perangkat hilang. Untuk beberapa pengurus, buat satu token per orang (tiap orang harus menjadi *collaborator* repo).
 
@@ -30,7 +30,7 @@ Token hanya disimpan di browser Anda dan hanya dikirim ke `api.github.com`. Siap
 - Berita baru otomatis mendapat alamat `berita.html?s=<judul-berita>`.
 
 ## 3. Keamanan & batas
-- Halaman `/admin/` boleh diakses siapa saja, tetapi tanpa token yang punya izin tulis ke repo, ia tidak bisa mengubah apa pun.
+- Halaman `/ytta/` boleh diakses siapa saja, tetapi tanpa token yang punya izin tulis ke repo, ia tidak bisa mengubah apa pun.
 - Jika dua orang menyunting bagian yang sama, panel akan menolak publikasi yang bentrok dan meminta masuk ulang.
 - Berkas besar (>25 MB) ditolak. Foto sebaiknya JPG/PNG/WebP.
 - Pesan pembuka WhatsApp dan email notifikasi registrasi tetap berbahasa Indonesia.

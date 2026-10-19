@@ -91,7 +91,7 @@
   function articlePage() {
     var m = document.querySelector('[data-cms-article]'); if (!m) return;
     var id = new URLSearchParams(location.search).get('s'), a = id && R.article(D, id, { lang: lang(), img: img });
-    if (!a) { m.innerHTML = '<section class="section"><div class="article"><h2>Artikel tidak ditemukan</h2><p style="margin-top:24px"><a class="ulink" href="kegiatan.html">← Semua kegiatan</a></p></div></section>'; return; }
+    if (!a) { m.innerHTML = '<section class="section"><div class="article"><h2>Artikel tidak ditemukan</h2><p style="margin-top:24px"><a class="ulink" href="kegiatan">← Semua kegiatan</a></p></div></section>'; return; }
     if (m.__html !== a.html) { m.__html = a.html; m.innerHTML = a.html; reveal(m); }
     document.title = a.title + ' — GSJA City Blessing';
     var d = document.querySelector('meta[name=description]'); if (d) d.content = a.desc;

@@ -18,7 +18,7 @@ const h = (tag, attrs = {}, ...kids) => {
   return e;
 };
 const LANGS = [['id', 'Indonesia'], ['en', 'English'], ['zh', '中文'], ['ko', '한국어']];
-const PAGES = ['index.html', 'ibadah.html', 'kegiatan.html', 'tentang.html', 'kontak.html', 'generasi.html', 'registrasi.html'];
+const PAGES = ['./', 'ibadah', 'kegiatan', 'tentang', 'kontak', 'generasi', 'registrasi'];
 const DAYS = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
 /* ---------- Skema konten ---------- */
@@ -257,7 +257,7 @@ function fieldEl(f, rec, lang, onStruct) {
     }
     case 'link': {
       const id = 'dl-' + uid();
-      return labelWrap(f, [h('input', { type: 'text', list: id, value: getV(rec, f.k, lang), placeholder: 'ibadah.html atau https://…', oninput: on(e => setV(rec, f.k, lang, e.target.value)) }), h('datalist', { id }, [...PAGES, 'youth.html', 'kids.html', 'persekutuan.html', 'pelayanan.html', 'doa.html'].map(p => h('option', { value: p })))]);
+      return labelWrap(f, [h('input', { type: 'text', list: id, value: getV(rec, f.k, lang), placeholder: 'ibadah atau https://…', oninput: on(e => setV(rec, f.k, lang, e.target.value)) }), h('datalist', { id }, [...PAGES, 'youth.html', 'kids.html', 'persekutuan.html', 'pelayanan.html', 'doa.html'].map(p => h('option', { value: p })))]);
     }
     case 'image': return imageField(f, rec);
     case 'list': return listField(f, rec, lang, onStruct);

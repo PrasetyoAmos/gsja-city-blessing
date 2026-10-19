@@ -55,7 +55,7 @@
       return String(b.tanggal || '').localeCompare(String(a.tanggal || ''));
     });
   }
-  function postHref(p) { return 'berita.html?s=' + encodeURIComponent(p.id); }
+  function postHref(p) { return 'berita?s=' + encodeURIComponent(p.id); }
   function lines(text, start) {
     return text.split('|').map(function (t, i) { return '<span class="line" style="--i:' + ((start || 0) + i) + '"><span>' + t + '</span></span>'; }).join('');
   }
@@ -65,7 +65,7 @@
   S['jadwal-home'] = function (D, c) {
     return ((D.jadwal && D.jadwal.items) || []).filter(function (j) { return j.beranda !== false; }).map(function (j) {
       var nama = tr(j, 'nama_beranda', c.lang) || tr(j, 'nama', c.lang);
-      return '<a class="sched-row reveal" href="' + href(j.link || 'ibadah.html') + '"><div><h3>' + esc(nama) + '</h3></div><div class="t"><small>' + dayName(j.hari, c.lang) + '</small>' + esc(tr(j, 'jam_beranda', c.lang) || j.jam) + '</div><div class="w">' + esc(tr(j, 'lokasi', c.lang)) + '</div><div class="p"><b>' + esc(tr(j, 'pelayan', c.lang)) + '</b>' + esc(tr(j, 'ket_beranda', c.lang) || tr(j, 'ket', c.lang)) + '</div></a>';
+      return '<a class="sched-row reveal" href="' + href(j.link || 'ibadah') + '"><div><h3>' + esc(nama) + '</h3></div><div class="t"><small>' + dayName(j.hari, c.lang) + '</small>' + esc(tr(j, 'jam_beranda', c.lang) || j.jam) + '</div><div class="w">' + esc(tr(j, 'lokasi', c.lang)) + '</div><div class="p"><b>' + esc(tr(j, 'pelayan', c.lang)) + '</b>' + esc(tr(j, 'ket_beranda', c.lang) || tr(j, 'ket', c.lang)) + '</div></a>';
     }).join('\n');
   };
   S['jadwal-full'] = function (D, c) {
@@ -78,14 +78,14 @@
       var judul = tr(p, 'judul', c.lang);
       return '<a class="news-card reveal" href="' + postHref(p) + '"><div class="ph"><img src="' + esc(c.img(p.foto)) + '" alt="' + esc(judul) + '"></div><div class="meta">' + esc(fmtDate(p.tanggal, c.lang)) + '</div><h3>' + esc(judul) + '</h3><p>' + esc(summary(tr(p, 'isi', c.lang))) + '</p></a>';
     }).join('');
-    return cards + '\n<a class="news-card invite reveal" href="ibadah.html"><div class="ph"><small>GSJA CITY BLESSING</small><strong>SEE YOU<br>THIS<br><em>SUNDAY.</em></strong><small>07.00 &amp; 09.15 WIB</small></div><div class="meta">Undangan</div><h3>Sampai jumpa hari Minggu</h3><p>Undangan untuk Anda dan keluarga.</p></a>';
+    return cards + '\n<a class="news-card invite reveal" href="ibadah"><div class="ph"><small>GSJA CITY BLESSING</small><strong>SEE YOU<br>THIS<br><em>SUNDAY.</em></strong><small>07.00 &amp; 09.15 WIB</small></div><div class="meta">Undangan</div><h3>Sampai jumpa hari Minggu</h3><p>Undangan untuk Anda dan keluarga.</p></a>';
   };
   S.ev = function (D, c) {
     var cards = sortPosts(D.kegiatan && D.kegiatan.items).filter(function (p) { return p.beranda !== false; }).slice(0, 8).map(function (p) {
       var judul = tr(p, 'judul_beranda', c.lang) || tr(p, 'judul', c.lang), tempat = String(tr(p, 'tempat', c.lang)).split(',')[0];
       return '<a class="ev" href="' + postHref(p) + '"><div class="ph"><img src="' + esc(c.img(p.foto)) + '" alt="' + esc(tr(p, 'alt', c.lang) || tr(p, 'judul', c.lang)) + '"><span class="chip">' + esc(tr(p, 'kategori', c.lang)) + '</span></div><div class="cap"><div><h3>' + esc(judul) + '</h3><p>' + esc(fmtDate(p.tanggal, c.lang) + ' · ' + tempat) + '</p></div><span class="go">' + ARROW + '</span></div></a>';
     }).join('\n');
-    return cards + '\n<a class="ev invite" href="ibadah.html"><div class="ph"><small>GSJA CITY BLESSING</small><strong>SEE YOU<br>THIS<br><em>SUNDAY.</em></strong><span class="bt">07.00 &amp; 09.15 WIB ' + ARROW + '</span></div><div class="cap"><div><h3>Sampai jumpa hari Minggu</h3><p>Undangan untuk Anda dan keluarga</p></div><span class="go">' + ARROW + '</span></div></a>';
+    return cards + '\n<a class="ev invite" href="ibadah"><div class="ph"><small>GSJA CITY BLESSING</small><strong>SEE YOU<br>THIS<br><em>SUNDAY.</em></strong><span class="bt">07.00 &amp; 09.15 WIB ' + ARROW + '</span></div><div class="cap"><div><h3>Sampai jumpa hari Minggu</h3><p>Undangan untuk Anda dan keluarga</p></div><span class="go">' + ARROW + '</span></div></a>';
   };
   S.team = function (D, c) {
     return ((D.tim && D.tim.items) || []).map(function (p) {
@@ -111,16 +111,16 @@
     return k ? new Array(7).join(k) : '';
   };
 
-  /* halaman artikel (berita.html?s=slug) */
+  /* halaman artikel (berita?s=slug) */
   function article(D, id, c) {
     var p = ((D.kegiatan && D.kegiatan.items) || []).filter(function (x) { return x.id === id; })[0];
     if (!p) return null;
     var judul = tr(p, 'judul', c.lang), tgl = fmtDate(p.tanggal, c.lang), tempat = tr(p, 'tempat', c.lang), isi = paras(tr(p, 'isi', c.lang));
-    var html = '<section class="phero rise c-cream"><div class="phero-in"><nav class="crumbs fade-up" style="--i:0" aria-label="Breadcrumb"><a href="index.html">Beranda</a><i>/</i><a href="kegiatan.html">Kegiatan</a><i>/</i><span>' + esc(judul) + '</span></nav><span class="eyebrow fade-up" style="--i:1">' + esc(tr(p, 'kategori', c.lang)) + '</span><h1>' + lines(esc(judul), 1) + '</h1><p class="lead fade-up" style="--i:5">' + esc(tgl + ' · ' + tempat) + '</p></div></section>' +
+    var html = '<section class="phero rise c-cream"><div class="phero-in"><nav class="crumbs fade-up" style="--i:0" aria-label="Breadcrumb"><a href="./">Beranda</a><i>/</i><a href="kegiatan">Kegiatan</a><i>/</i><span>' + esc(judul) + '</span></nav><span class="eyebrow fade-up" style="--i:1">' + esc(tr(p, 'kategori', c.lang)) + '</span><h1>' + lines(esc(judul), 1) + '</h1><p class="lead fade-up" style="--i:5">' + esc(tgl + ' · ' + tempat) + '</p></div></section>' +
       '<section class="section"><div class="article">' + (p.foto ? '<div class="cover img-reveal"><img src="' + esc(c.img(p.foto)) + '" alt="' + esc(judul) + '"></div>' : '') +
       '<div class="facts"><span>Tanggal<b>' + esc(tgl) + '</b></span><span>Lokasi<b>' + esc(tempat) + '</b></span></div>' +
       isi.map(function (t) { return '<p class="reveal">' + esc(t) + '</p>'; }).join('') +
-      '<p style="margin-top:40px"><a class="ulink" href="kegiatan.html">← Semua kegiatan</a></p></div></section>';
+      '<p style="margin-top:40px"><a class="ulink" href="kegiatan">← Semua kegiatan</a></p></div></section>';
     return { title: judul, desc: isi[0] ? isi[0].slice(0, 150) : '', html: html };
   }
 

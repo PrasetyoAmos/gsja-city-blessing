@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /apps-script/
-Disallow: /admin/
+Disallow: /ytta/
 Sitemap: https://gsjacityblessing.com/sitemap.xml
