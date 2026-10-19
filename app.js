@@ -1,57 +1,28 @@
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* mobile menu */
-const menu=$('#mobile-menu'),mbtn=$('.menu-btn');
-function setMenu(open){menu.hidden=!open;mbtn.setAttribute('aria-expanded',String(open));mbtn.setAttribute('aria-label',open?'Tutup menu':'Buka menu');mbtn.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'}
-mbtn.addEventListener('click',()=>setMenu(menu.hidden));
-$$('#mobile-menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
-
-/* hero slideshow */
-const slides=$$('.slide'),dots=$$('.dot');let hi=0,paused=reduced,hover=false,timer;
-function showHero(n){hi=(n+slides.length)%slides.length;slides.forEach((s,i)=>{const on=i===hi;s.classList.toggle('active',on);s.setAttribute('aria-hidden',String(!on));s.inert=!on});
-  dots.forEach((d,i)=>{d.classList.remove('on');d.removeAttribute('aria-current');if(i===hi){void d.offsetWidth;d.classList.add('on');d.setAttribute('aria-current','true')}});restart()}
-function restart(){clearTimeout(timer);if(!paused)timer=setTimeout(()=>{if(hover||document.hidden)restart();else showHero(hi+1)},8000)}
-$('.h-next').addEventListener('click',()=>showHero(hi+1));$('.h-prev').addEventListener('click',()=>showHero(hi-1));
-dots.forEach((d,i)=>d.addEventListener('click',()=>showHero(i)));
-const pbtn=$('.h-pause');function setPause(){$('.hero').classList.toggle('paused',paused);pbtn.setAttribute('aria-pressed',String(paused));pbtn.setAttribute('aria-label',paused?'Putar slideshow':'Jeda slideshow');pbtn.innerHTML=paused?'<i class="fa-solid fa-play" style="font-size:14px"></i>':'<i class="fa-solid fa-pause" style="font-size:14px"></i>';restart()}
-pbtn.addEventListener('click',()=>{paused=!paused;setPause()});
-$('.hero').addEventListener('mouseenter',()=>hover=true);$('.hero').addEventListener('mouseleave',()=>hover=false);
-setPause();
-
-/* event carousel (scroll-snap) */
-const track=$('.ev-track');
-function scrollEv(dir){const card=track.querySelector('.ev');track.scrollBy({left:dir*(card.getBoundingClientRect().width+24),behavior:reduced?'auto':'smooth'})}
-$('.ev-next').addEventListener('click',()=>scrollEv(1));$('.ev-prev').addEventListener('click',()=>scrollEv(-1));
-
-/* reveal */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
-$$('.reveal').forEach(el=>io.observe(el));
-
-/* nav highlight */
-const links=$$('.nav a'),secs=links.map(a=>$(a.getAttribute('href')));
-const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
-secs.forEach(s=>s&&so.observe(s));
-
-/* detail dialog */
+let heroIndex=0,eventIndex=0,paused=reduced,eventPaused=reduced,heroHover=false,eventHover=false;
+const slides=$$('.hero-slide'),heroDots=$$('.hero-dot'),eventDots=$$('.event-dot');
+function showHero(index){heroIndex=(index+slides.length)%slides.length;slides.forEach((slide,i)=>{const active=i===heroIndex;slide.classList.toggle('active',active);slide.setAttribute('aria-hidden',String(!active));slide.inert=!active;heroDots[i].classList.toggle('selected',active);if(active)heroDots[i].setAttribute('aria-current','true');else heroDots[i].removeAttribute('aria-current')})}
+function showEvent(index){eventIndex=(index+3)%3;const cards=$$('.event-card');const gap=parseFloat(getComputedStyle($('.event-track')).gap);$('.event-track').style.transform=`translateX(-${eventIndex*(cards[0].getBoundingClientRect().width+gap)}px)`;eventDots.forEach((dot,i)=>{dot.classList.toggle('selected',i===eventIndex);if(i===eventIndex)dot.setAttribute('aria-current','true');else dot.removeAttribute('aria-current')});cards.forEach((card,i)=>{card.inert=i!==eventIndex;card.setAttribute('aria-hidden',String(i!==eventIndex))})}
+$('.hero-next').addEventListener('click',()=>showHero(heroIndex+1));heroDots.forEach((dot,i)=>dot.addEventListener('click',()=>showHero(i)));
+function setMotion(){document.body.classList.toggle('paused',paused);$('.motion-control').textContent=paused?'▶':'Ⅱ';$('.motion-control').setAttribute('aria-label',paused?'Putar animasi':'Jeda animasi');$('.motion-control').setAttribute('aria-pressed',String(paused))}$('.motion-control').addEventListener('click',()=>{paused=!paused;setMotion()});setMotion();
+$('.event-next').addEventListener('click',()=>showEvent(eventIndex+1));$('.event-prev').addEventListener('click',()=>showEvent(eventIndex-1));eventDots.forEach((dot,i)=>dot.addEventListener('click',()=>showEvent(i)));
+$('.event-pause').addEventListener('click',()=>{eventPaused=!eventPaused;$('.event-pause').textContent=eventPaused?'▶':'Ⅱ';$('.event-pause').setAttribute('aria-label',eventPaused?'Putar carousel kegiatan':'Jeda carousel kegiatan');$('.event-pause').setAttribute('aria-pressed',String(eventPaused))});
+$('.hero').addEventListener('mouseenter',()=>heroHover=true);$('.hero').addEventListener('mouseleave',()=>heroHover=false);$('.event-carousel').addEventListener('mouseenter',()=>eventHover=true);$('.event-carousel').addEventListener('mouseleave',()=>eventHover=false);
+setInterval(()=>{if(!paused&&!heroHover&&!document.hidden&&!$('.hero').contains(document.activeElement)&&!$('#detail-dialog').open)showHero(heroIndex+1)},11000);
+setInterval(()=>{if(!eventPaused&&!eventHover&&!document.hidden&&!$('.events').contains(document.activeElement)&&!$('#detail-dialog').open)showEvent(eventIndex+1)},6500);
+window.addEventListener('resize',()=>showEvent(eventIndex));showEvent(0);
+let touchStart=0;$('.event-carousel').addEventListener('touchstart',e=>{touchStart=e.changedTouches[0].screenX},{passive:true});$('.event-carousel').addEventListener('touchend',e=>{const delta=e.changedTouches[0].screenX-touchStart;if(Math.abs(delta)>45)showEvent(eventIndex+(delta<0?1:-1))},{passive:true});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target)}}),{threshold:.08});$$('.reveal').forEach(el=>observer.observe(el));
 const details={
-gathering:{k:'DOKUMENTASI · 22 AGUSTUS 2026',t:'Gathering Kaum Pria',b:'Gathering Kaum Pria Integritas se-Banten berlangsung di Bukit Doa Salomo, Depok, dihadiri gereja-gereja GSJA dari seluruh wilayah Banten. Momen kebersamaan dan kekeluargaan: GSJA bersatu, gereja pasti maju!',m:'Bukit Doa Salomo, Depok · Jawa Barat'},
-independence:{k:'DOKUMENTASI · 17 AGUSTUS 2026',t:'Kemerdekaan HUT ke-81',b:'Keseruan HUT RI ke-81 di GSJA City Blessing menambah keharmonisan dan kekeluargaan jemaat.',m:'GSJA City Blessing · Teluknaga'},
-welcome:{k:'UNDANGAN UNTUK ANDA',t:'Sampai jumpa hari Minggu.',b:'Kami menantikan kehadiran Anda dan keluarga. Datang sebagaimana Anda adanya.',m:'Ibadah Raya · Minggu, 07.00 & 09.15 WIB'}};
-const dlg=$('#dlg');
-$$('[data-detail]').forEach(b=>b.addEventListener('click',()=>{const d=details[b.dataset.detail];$('#d-kicker').textContent=d.k;$('#d-title').textContent=d.t;$('#d-body').textContent=d.b;$('#d-meta').textContent=d.m;dlg.setAttribute('aria-labelledby','d-title');dlg.showModal()}));
-$('.d-close').addEventListener('click',()=>dlg.close());$('#d-act').addEventListener('click',()=>dlg.close());
-dlg.addEventListener('click',e=>{const r=dlg.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dlg.close()});
-
-/* service links prefill contact form */
-$$('.svc a[data-msg]').forEach(a=>a.addEventListener('click',()=>{$('#c-kat').value=a.dataset.cat;$('#c-pesan').value=a.dataset.msg}));
-
-/* contact form -> WhatsApp sekretariat */
-$('#contact-form').addEventListener('submit',e=>{e.preventDefault();
-  const nama=$('#c-nama').value.trim(),pesan=$('#c-pesan').value.trim(),st=$('#c-status');
-  if(!nama||!pesan){st.style.color='#ffb3c7';st.textContent='Mohon isi nama dan pesan terlebih dahulu.';return}
-  const text=`Shalom, saya ${nama}.\nKategori: ${$('#c-kat').value}\n${$('#c-wa').value?'WhatsApp: '+$('#c-wa').value+'\n':''}${$('#c-email').value?'Email: '+$('#c-email').value+'\n':''}\n${pesan}`;
-  st.style.color='';st.textContent='Membuka WhatsApp sekretariat…';
-  window.open('https://wa.me/6281288175905?text='+encodeURIComponent(text),'_blank','noopener');
-});
+youth:{kicker:'YOUTH & CAMPUS MINISTRY',title:'Generasi muda. Tujuan yang berarti.',body:'Bergabung dalam ibadah Youth & Campus Ministry GSJA City Blessing. Tempat untuk bersekutu dan bertumbuh bersama dalam iman.',meta:'Sabtu · 17.00 WIB · Youth Hall, lantai 2'},
+kids:{kicker:'SEKOLAH MINGGU',title:'Iman besar dimulai dari langkah kecil.',body:'Sekolah Minggu Kids mendampingi anak-anak dalam mengenal Tuhan. Hubungi tim kami untuk informasi usia, kegiatan, dan persiapan kunjungan.',meta:'Minggu · 07.00 & 09.15 WIB · Kids Room, lantai 2'},
+community:{kicker:'PERSEKUTUAN',title:'Ada keluarga yang berjalan bersama Anda.',body:'Bertumbuh dalam kebenaran dan bersekutu dalam kasih adalah bagian dari misi GSJA City Blessing. Tim gereja siap membantu Anda terhubung dengan persekutuan yang sesuai.',meta:'Hubungi sekretariat untuk informasi komunitas.'},
+service:{kicker:'PELAYANAN JEMAAT',title:'Kami siap mendampingi Anda.',body:'Pelayanan gereja mencakup baptisan air, bimbingan dan peneguhan pernikahan, penyerahan anak, serta konseling pastoral. Bicarakan kebutuhan Anda dengan tim kami.',meta:'Informasi dan penjadwalan melalui sekretariat gereja.'},
+prayer:{kicker:'DOA & KONSELING',title:'Anda tidak berjalan sendiri.',body:'Ada pergumulan atau kerinduan yang ingin didoakan? Tim gereja siap mendengar dan mendampingi Anda melalui doa dan konseling pastoral.',meta:'Hubungi tim secara pribadi melalui WhatsApp sekretariat.'},
+about:{kicker:'TENTANG GSJA CITY BLESSING',title:'Bertumbuh dalam kebenaran. Bersekutu dalam kasih.',body:'Pada Agustus 2003, Pdt. Samuel Darmanto melanjutkan pelayanan penggembalaan GSJA Teluk Naga yang kemudian bernama GSJA City Blessing. Kami rindu bertumbuh dalam kebenaran, bersekutu dalam kasih, bekerja untuk misi, dan menuju kesempurnaan Kristus.',meta:'GSJA City Blessing · Teluknaga, Tangerang'},
+gathering:{kicker:'DOKUMENTASI · 22 AGUSTUS 2026',title:'Gathering Kaum Pria',body:'Gathering Kaum Pria Integritas se-Banten berlangsung di Bukit Doa Salomo, Depok. Pertemuan ini menjadi momen kebersamaan dan kekeluargaan bagi peserta dari gereja-gereja GSJA di wilayah Banten.',meta:'Sumber: dokumentasi kegiatan pada website GSJA City Blessing.'},
+independence:{kicker:'DOKUMENTASI · 17 AGUSTUS 2026',title:'Merayakan Kemerdekaan',body:'Jemaat GSJA City Blessing merayakan HUT ke-81 Republik Indonesia dengan kegiatan bersama yang mempererat keharmonisan dan kekeluargaan.',meta:'Sumber: dokumentasi kegiatan pada website GSJA City Blessing.'},
+welcome:{kicker:'UNDANGAN UNTUK ANDA',title:'Sampai jumpa hari Minggu.',body:'Kami menantikan kehadiran Anda dan keluarga di GSJA City Blessing. Hubungi tim untuk informasi kunjungan dan petunjuk lokasi.',meta:'Ibadah Raya · Minggu, 07.00 & 09.15 WIB'}
+};
+$$('[data-detail]').forEach(button=>button.addEventListener('click',()=>{const data=details[button.dataset.detail];$('#detail-kicker').textContent=data.kicker;$('#detail-title').textContent=data.title;$('#detail-body').textContent=data.body;$('#detail-meta').textContent=data.meta;$('#detail-dialog').setAttribute('aria-labelledby','detail-title');$('#detail-dialog').showModal();document.body.classList.add('dialog-open')}));
+function closeDialog(){$('#detail-dialog').close();document.body.classList.remove('dialog-open')}$('.dialog-close').addEventListener('click',closeDialog);$('#detail-action').addEventListener('click',closeDialog);$('#detail-dialog').addEventListener('close',()=>document.body.classList.remove('dialog-open'));$('#detail-dialog').addEventListener('click',e=>{if(e.target===$('#detail-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog()}});

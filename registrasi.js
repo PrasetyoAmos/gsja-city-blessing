@@ -1,9 +1,3 @@
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-
-/* mobile menu */
-const menu=$('#mobile-menu'),mbtn=$('.menu-btn');
-function setMenu(o){menu.hidden=!o;mbtn.setAttribute('aria-expanded',String(o));mbtn.innerHTML=o?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'}
-mbtn.addEventListener('click',()=>setMenu(menu.hidden));
 
 /* data wilayah CONTOH (di web asli dimuat dari server) */
 const WIL={
@@ -20,7 +14,7 @@ kec.addEventListener('change',()=>fill(kel,kec.value?WIL[prov.value][kota.value]
 /* foto profil */
 $('#foto').addEventListener('change',e=>{const f=e.target.files[0],h=$('#foto-hint'),p=$('#photo-prev');
   if(!f)return;
-  if(!/^image\/(jpeg|png|webp)$/.test(f.type)||f.size>5*1024*1024){e.target.value='';h.style.color='#d6336c';h.textContent='File harus JPG, PNG, atau WEBP dan maksimal 5 MB.';p.innerHTML='<i class="fa-solid fa-user"></i>';return}
+  if(!/^image\/(jpeg|png|webp)$/.test(f.type)||f.size>5*1024*1024){e.target.value='';h.style.color='#d6336c';h.textContent='File harus JPG, PNG, atau WEBP dan maksimal 5 MB.';p.textContent='☺';return}
   h.style.color='';h.textContent=f.name;const r=new FileReader();r.onload=()=>{p.innerHTML='';const i=new Image();i.alt='Pratinjau foto profil';i.src=r.result;p.appendChild(i)};r.readAsDataURL(f)});
 
 /* baris dinamis */
