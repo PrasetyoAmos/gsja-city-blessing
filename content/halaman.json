@@ -1,0 +1,254 @@
+{
+  "items": [
+    {
+      "id": "persekutuan",
+      "nama": "Persekutuan",
+      "eyebrow": "PERSEKUTUAN",
+      "baris1": "Lebih dekat.",
+      "baris2": "Lebih bertumbuh.",
+      "lead": "Bersekutu dalam kasih bersama keluarga besar jemaat GSJA City Blessing.",
+      "tombol": "Lihat kegiatan",
+      "info": [
+        {
+          "label": "Ibadah Raya",
+          "nilai": "Minggu · 07.00 & 09.15 WIB",
+          "t": {}
+        },
+        {
+          "label": "Tempat",
+          "nilai": "GSJA City Blessing, lantai 2",
+          "t": {}
+        },
+        {
+          "label": "Gembala",
+          "nilai": "Pdp. Grace Darmanto",
+          "t": {}
+        }
+      ],
+      "kicker": "PERSEKUTUAN",
+      "judul": "Tidak ada yang bertumbuh sendirian.",
+      "isi": "Bertumbuh dalam kebenaran dan bersekutu dalam kasih adalah bagian dari misi kami. Persekutuan jemaat hadir lewat ibadah raya, kegiatan kaum pria, pembinaan kaum wanita, dan kebersamaan keluarga.",
+      "fitur": [
+        {
+          "ikon": "✦",
+          "judul": "Ibadah raya",
+          "isi": "Dua kali setiap Minggu, pukul 07.00 dan 09.15 WIB.",
+          "t": {}
+        },
+        {
+          "ikon": "♂",
+          "judul": "Kaum Pria",
+          "isi": "Gathering Kaum Pria Integritas se-Banten adalah salah satu momen kebersamaan kami.",
+          "t": {}
+        },
+        {
+          "ikon": "♀",
+          "judul": "Kaum Wanita",
+          "isi": "Pembinaan jemaat dan kaum wanita bersama Pdp. Grace Darmanto.",
+          "t": {}
+        }
+      ],
+      "t": {}
+    },
+    {
+      "id": "pelayanan",
+      "nama": "Pelayanan Jemaat",
+      "eyebrow": "PELAYANAN JEMAAT",
+      "baris1": "Menjadi berkat,",
+      "baris2": "dimulai dari sini.",
+      "lead": "Layanan rohani bagi Anda dan keluarga, serta tempat untuk melayani sesama.",
+      "tombol": "Hubungi sekretariat",
+      "info": [
+        {
+          "label": "Layanan",
+          "nilai": "Baptisan · Pernikahan · Penyerahan Anak",
+          "t": {}
+        },
+        {
+          "label": "Konseling",
+          "nilai": "Pastoral, rahasia & suportif",
+          "t": {}
+        },
+        {
+          "label": "Info",
+          "nilai": "Lewat sekretariat gereja",
+          "t": {}
+        }
+      ],
+      "kicker": "PELAYANAN JEMAAT",
+      "judul": "Kami siap mendampingi Anda.",
+      "isi": "Pelayanan gereja mencakup baptisan air, bimbingan dan peneguhan pernikahan, penyerahan anak, serta konseling pastoral. Bicarakan kebutuhan Anda dengan tim kami.\n\nIngin ikut melayani? Tulis minat dan talenta Anda saat [registrasi jemaat](registrasi).",
+      "fitur": [
+        {
+          "ikon": "≈",
+          "judul": "Baptisan Air",
+          "isi": "Pembaptisan bagi orang percaya sebagai tanda komitmen iman yang baru.",
+          "t": {}
+        },
+        {
+          "ikon": "◯",
+          "judul": "Pernikahan Kudus",
+          "isi": "Bimbingan pra-nikah dan peneguhan pernikahan berlandaskan Firman Allah.",
+          "t": {}
+        },
+        {
+          "ikon": "☺",
+          "judul": "Penyerahan Anak",
+          "isi": "Mendoakan dan menyerahkan tumbuh kembang anak dalam perlindungan Tuhan.",
+          "t": {}
+        }
+      ],
+      "t": {}
+    },
+    {
+      "id": "kids",
+      "nama": "City Blessing Kids",
+      "eyebrow": "SEKOLAH MINGGU",
+      "baris1": "Iman besar.",
+      "baris2": "Langkah kecil.",
+      "lead": "City Blessing Kids mendampingi anak-anak mengenal Tuhan setiap hari Minggu.",
+      "tombol": "Tanya tim Kids",
+      "info": [
+        {
+          "label": "Waktu",
+          "nilai": "Minggu · 07.00 & 09.15 WIB",
+          "t": {}
+        },
+        {
+          "label": "Tempat",
+          "nilai": "Kids Room, lantai 2",
+          "t": {}
+        },
+        {
+          "label": "Pelayan",
+          "nilai": "Sdr. Lely Grafy",
+          "t": {}
+        }
+      ],
+      "kicker": "SEKOLAH MINGGU",
+      "judul": "Tempat anak-anak bertumbuh dalam Tuhan.",
+      "isi": "Sekolah Minggu berlangsung bersamaan dengan kedua ibadah raya, sehingga orang tua dapat beribadah dengan tenang sementara anak-anak belajar di ruang khusus mereka.\n\nIngin tahu lebih jauh tentang kelas dan kegiatan anak? Hubungi sekretariat, kami senang menjelaskannya.",
+      "fitur": [
+        {
+          "ikon": "☺",
+          "judul": "Dua sesi tiap Minggu",
+          "isi": "Pilih sesi pukul 07.00 atau 09.15 WIB sesuai waktu keluarga Anda.",
+          "t": {}
+        },
+        {
+          "ikon": "✎",
+          "judul": "Belajar Firman",
+          "isi": "Anak-anak mengenal Tuhan lewat pengajaran yang sesuai usia mereka.",
+          "t": {}
+        },
+        {
+          "ikon": "♡",
+          "judul": "Dekat dengan orang tua",
+          "isi": "Kids Room berada di lantai 2, satu lantai dengan ruang ibadah raya.",
+          "t": {}
+        }
+      ],
+      "t": {}
+    },
+    {
+      "id": "youth",
+      "nama": "Youth & Campus",
+      "eyebrow": "YOUTH & CAMPUS",
+      "baris1": "Generasi muda.",
+      "baris2": "Tujuan yang berarti.",
+      "lead": "Youth & Campus Ministry: tempat bersekutu dan bertumbuh bersama generasi muda.",
+      "tombol": "Daftar sebagai jemaat",
+      "info": [
+        {
+          "label": "Waktu",
+          "nilai": "Sabtu · 17.00 WIB",
+          "t": {}
+        },
+        {
+          "label": "Tempat",
+          "nilai": "Youth Hall, lantai 2",
+          "t": {}
+        },
+        {
+          "label": "Pelayan",
+          "nilai": "Pdt. Samuel Rendra",
+          "t": {}
+        }
+      ],
+      "kicker": "YOUTH & CAMPUS",
+      "judul": "Bertumbuh bersama di usia yang paling menentukan.",
+      "isi": "Setiap Sabtu sore, anak muda dan mahasiswa berkumpul di Youth Hall untuk beribadah dan bersekutu. Pi. Natan Prasetya mengarahkan pelayanan generasi muda di gereja kami.\n\nDatang sendiri atau ajak teman, semua diterima.",
+      "fitur": [
+        {
+          "ikon": "★",
+          "judul": "Ibadah Sabtu sore",
+          "isi": "Berkumpul pukul 17.00 WIB di Youth Hall, lantai 2.",
+          "t": {}
+        },
+        {
+          "ikon": "☻",
+          "judul": "Komunitas",
+          "isi": "Bertemu teman seiman yang saling menguatkan.",
+          "t": {}
+        },
+        {
+          "ikon": "➜",
+          "judul": "Langkah berikutnya",
+          "isi": "Temukan tempat untuk melayani lewat formulir minat pelayanan.",
+          "t": {}
+        }
+      ],
+      "t": {}
+    },
+    {
+      "id": "doa",
+      "nama": "Doa & Konseling",
+      "eyebrow": "DOA & KONSELING",
+      "baris1": "Anda tidak",
+      "baris2": "berjalan sendiri.",
+      "lead": "Ada pergumulan atau kerinduan yang ingin didoakan? Tim kami siap mendengar.",
+      "tombol": "Kirim permohonan doa",
+      "info": [
+        {
+          "label": "Layanan",
+          "nilai": "Doa & konseling pastoral",
+          "t": {}
+        },
+        {
+          "label": "Sifat",
+          "nilai": "Rahasia & suportif",
+          "t": {}
+        },
+        {
+          "label": "Hubungi",
+          "nilai": "WhatsApp sekretariat",
+          "t": {}
+        }
+      ],
+      "kicker": "DOA & KONSELING",
+      "judul": "Didengar, didoakan, didampingi.",
+      "isi": "Layanan pendampingan doa dan konseling pribadi diberikan secara rahasia dan suportif. Anda dapat menyampaikan pokok doa langsung lewat WhatsApp admin, dengan pesan pembuka yang sudah disiapkan.",
+      "fitur": [
+        {
+          "ikon": "✉",
+          "judul": "Permohonan doa",
+          "isi": "Kirim pokok doa Anda langsung lewat WhatsApp admin.",
+          "t": {}
+        },
+        {
+          "ikon": "☎",
+          "judul": "Konseling pastoral",
+          "isi": "Bicara pribadi dengan tim pastoral kami.",
+          "t": {}
+        },
+        {
+          "ikon": "♡",
+          "judul": "Konseling keluarga",
+          "isi": "Pdp. Grace Darmanto berfokus pada konseling keluarga dan doa syafaat.",
+          "t": {}
+        }
+      ],
+      "t": {}
+    }
+  ]
+}

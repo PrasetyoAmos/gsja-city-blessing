@@ -111,6 +111,27 @@
     return k ? new Array(7).join(k) : '';
   };
 
+  /* halaman Generasi (persekutuan, pelayanan, kids, youth, doa): strip info, paragraf, kartu fitur.
+     Tautan sebaris ditulis [teks](tautan). Elemen penampung membawa data-pg="<id halaman>". */
+  function pg(D, c) { var id = c.el && c.el.getAttribute('data-pg'); return ((D.halaman && D.halaman.items) || []).filter(function (x) { return x.id === id; })[0]; }
+  function rich(s) {
+    return esc(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, t, u) { return '<a class="ulink" href="' + u + '">' + t + '</a>'; });
+  }
+  S['pg-info'] = function (D, c) {
+    var p = pg(D, c); if (!p) return null;
+    return (p.info || []).map(function (q) { return '<div><small>' + esc(tr(q, 'label', c.lang)) + '</small><b>' + esc(tr(q, 'nilai', c.lang)) + '</b></div>'; }).join('');
+  };
+  S['pg-prose'] = function (D, c) {
+    var p = pg(D, c); if (!p) return null;
+    return paras(tr(p, 'isi', c.lang)).map(function (t) { return '<p>' + rich(t) + '</p>'; }).join('');
+  };
+  S['pg-feat'] = function (D, c) {
+    var p = pg(D, c); if (!p) return null;
+    return (p.fitur || []).map(function (f) {
+      return '<div class="feat-item reveal"><div class="ic">' + esc(f.ikon) + '</div><h3>' + esc(tr(f, 'judul', c.lang)) + '</h3><p>' + esc(tr(f, 'isi', c.lang)) + '</p></div>';
+    }).join('');
+  };
+
   /* halaman artikel (berita?s=slug) */
   function article(D, id, c) {
     var p = ((D.kegiatan && D.kegiatan.items) || []).filter(function (x) { return x.id === id; })[0];

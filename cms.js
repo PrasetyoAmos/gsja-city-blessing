@@ -2,8 +2,8 @@
    HTML statis hasil build tetap ada sebagai cadangan (SEO & saat JSON gagal dimuat). */
 (function () {
   var R = window.CMSR; if (!R) return;
-  var NAMES = ['situs', 'jadwal', 'kegiatan', 'tim', 'beranda', 'tentang'];
-  var NEED = { 'jadwal-home': 'jadwal', 'jadwal-full': 'jadwal', news: 'kegiatan', ev: 'kegiatan', team: 'tim', timeline: 'tentang', profil: 'tentang', quick: 'beranda', marquee: 'beranda' };
+  var NAMES = ['situs', 'jadwal', 'kegiatan', 'tim', 'beranda', 'tentang', 'halaman'];
+  var NEED = { 'jadwal-home': 'jadwal', 'jadwal-full': 'jadwal', news: 'kegiatan', ev: 'kegiatan', team: 'tim', timeline: 'tentang', profil: 'tentang', quick: 'beranda', marquee: 'beranda', 'pg-info': 'halaman', 'pg-prose': 'halaman', 'pg-feat': 'halaman' };
   var preview = null;
   try { if (window.parent !== window && window.parent.CMS_PREVIEW) preview = window.parent.CMS_PREVIEW; } catch (e) {}
   var D = null;
@@ -22,7 +22,9 @@
     document.querySelectorAll('[data-cms]').forEach(function (el) {
       var k = el.getAttribute('data-cms'), f = R.S[k];
       if (!f || !D[NEED[k]]) return;
+      c.el = el;
       var html = f(D, c);
+      if (html == null) return;
       if (el.__html === undefined && l === 'id' && el.getAttribute('data-cms-h') === R.hash(html)) { el.__html = html; return; }
       if (el.__html === html) return;
       el.__html = html; el.innerHTML = html; reveal(el);
@@ -88,6 +90,26 @@
       var ph = el.querySelector('img.second-photo'); if (ph && s.foto) { var u = img(s.foto); if (ph.getAttribute('src') !== u) ph.setAttribute('src', u); }
     });
   }
+  function pageBtn(a, rec, key) {
+    if (!a) return;
+    var l = lang(), ov = l !== 'id' && rec.t && rec.t[l] && rec.t[l][key], t = R.tr(rec, key, l) + ' ', n = a.firstChild;
+    if (!n || n.nodeType !== 3) return;
+    if (ov) { if (n.data !== t) n.data = t; n.__m = 'ov'; }
+    else if (l === 'id') { if (n.data !== t) n.data = t; n.__m = 'base'; n.__v = t; }
+    else if (!(n.__m === 'base' && n.__v === t)) { n.data = t; n.__m = 'base'; n.__v = t; }
+  }
+  /* halaman Generasi: hero + judul bagian (strip info, paragraf, kartu dirender lewat data-cms) */
+  function pagePart() {
+    var m = document.querySelector('main[data-pg]'); if (!m || !D.halaman) return;
+    var id = m.getAttribute('data-pg'), p = (D.halaman.items || []).filter(function (x) { return x.id === id; })[0]; if (!p) return;
+    var hero = m.querySelector('.phero'); if (hero) {
+      setT(hero.querySelector('.eyebrow'), p, 'eyebrow');
+      var ln = hero.querySelectorAll('.line>span'); setT(ln[0], p, 'baris1'); setT(ln[1], p, 'baris2');
+      setT(hero.querySelector('.lead'), p, 'lead');
+      pageBtn(hero.querySelector('.phero-actions a'), p, 'tombol');
+    }
+    setT(m.querySelector('.split .kicker'), p, 'kicker'); setT(m.querySelector('.split h2'), p, 'judul');
+  }
   function articlePage() {
     var m = document.querySelector('[data-cms-article]'); if (!m) return;
     var id = new URLSearchParams(location.search).get('s'), a = id && R.article(D, id, { lang: lang(), img: img });
@@ -98,7 +120,7 @@
   }
   function render() {
     if (!D) return;
-    sections(); bindings(); hero(); articlePage();
+    sections(); bindings(); hero(); pagePart(); articlePage();
   }
   function init() { load().then(function (d) { D = d; window.CMS_DATA = d; render(); }); }
   document.addEventListener('gsja-lang', render);

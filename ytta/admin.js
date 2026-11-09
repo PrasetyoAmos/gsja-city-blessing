@@ -94,6 +94,25 @@ const SCHEMA = {
         { k: 'tahun', label: 'Tahun / waktu', i18n: 1, ph: '2026' }, { k: 'judul', label: 'Judul', i18n: 1 },
         { k: 'isi', label: 'Keterangan', type: 'textarea', rows: 3, i18n: 1 }] }]
   },
+  halaman: {
+    title: 'Halaman Generasi', kind: 'single', page: 'persekutuan.html', icon: 'grid',
+    hint: 'Teks lima halaman di bawah menu Generasi: Persekutuan, Pelayanan Jemaat, Kids, Youth & Campus, dan Doa & Konseling.',
+    fields: [
+      { k: 'items', type: 'list', label: 'Halaman', item: 'Halaman', fixed: true, fields: [
+        { k: 'nama', label: 'Halaman (penanda di CMS saja)', help: 'Tidak tampil di situs. Alamat halaman tetap.' },
+        { k: 'eyebrow', label: 'Hero — teks kecil di atas judul', i18n: 1 },
+        { k: 'baris1', label: 'Hero — judul baris 1', i18n: 1 }, { k: 'baris2', label: 'Hero — judul baris 2', i18n: 1 },
+        { k: 'lead', label: 'Hero — kalimat pendukung', type: 'textarea', rows: 2, i18n: 1 },
+        { k: 'tombol', label: 'Hero — teks tombol', i18n: 1, help: 'Tautan tombol tetap (tidak bisa diubah di sini).' },
+        { k: 'info', type: 'list', label: 'Strip info (3 kotak)', item: 'Info', fixed: true, fields: [
+          { k: 'label', label: 'Judul kecil', i18n: 1 }, { k: 'nilai', label: 'Isi', i18n: 1 }] },
+        { k: 'kicker', label: 'Bagian utama — label kecil', i18n: 1 },
+        { k: 'judul', label: 'Bagian utama — judul', i18n: 1 },
+        { k: 'isi', label: 'Bagian utama — paragraf', type: 'textarea', rows: 7, i18n: 1, help: 'Pisahkan paragraf dengan satu baris kosong. Tautan: [teks](alamat), mis. [registrasi jemaat](registrasi).' },
+        { k: 'fitur', type: 'list', label: 'Kartu fitur (3 kartu)', item: 'Kartu', fixed: true, fields: [
+          { k: 'judul', label: 'Judul', i18n: 1 }, { k: 'isi', label: 'Keterangan', type: 'textarea', rows: 2, i18n: 1 },
+          { k: 'ikon', label: 'Ikon (1 simbol)', adv: 1, ph: '✦' }] }] }]
+  },
   situs: {
     title: 'Kontak & Situs', kind: 'single', page: 'kontak.html', icon: 'pin',
     hint: 'Alamat, nomor WhatsApp, email, media sosial, dan pesan pembuka WhatsApp. Dipakai di footer, Kontak, dan Beranda.',
@@ -120,7 +139,7 @@ const ICONS = {
   image: 'M4 5h16v14H4zM4 15l4-4 4 4 3-3 5 5M9 9h.01', hist: 'M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 8v5l3 2', dash: 'M4 4h7v7H4zM13 4h7v4h-7zM13 11h7v9h-7zM4 14h7v6H4z',
   plus: 'M12 5v14M5 12h14', trash: 'M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3', up: 'M12 19V5M6 11l6-6 6 6', down: 'M12 5v14M6 13l6 6 6-6',
   copy: 'M9 9h10v11H9zM5 15V4h10', eye: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z', out: 'M15 4h4v16h-4M10 8l-4 4 4 4M6 12h11',
-  drag: 'M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01', up2: 'M12 16V4M7 9l5-5 5 5M5 20h14', check: 'M5 12.5l4.5 4.5L19 7.5', sun: 'M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', moon: 'M20 14.5A8 8 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z'
+  drag: 'M9 6h.01M9 12h.01M9 18h.01M15 6h.01M15 12h.01M15 18h.01', up2: 'M12 16V4M7 9l5-5 5 5M5 20h14', check: 'M5 12.5l4.5 4.5L19 7.5', sun: 'M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', grid: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', moon: 'M20 14.5A8 8 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z'
 };
 const ico = (n, s = 18) => h('span', { class: 'ico', html: `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${ICONS[n]}"/></svg>` });
 

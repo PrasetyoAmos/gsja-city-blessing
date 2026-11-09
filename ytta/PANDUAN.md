@@ -19,6 +19,7 @@ Token hanya disimpan di browser Anda dan hanya dikirim ke `api.github.com`. Siap
 | Kegiatan & Berita | Judul, tanggal, tempat, foto, isi, terbit/draf, tampil di slider Beranda |
 | Tim Pelayan | Nama, jabatan, keterangan, foto (urutan = urutan tampil) |
 | Halaman Tentang | Profil, visi, misi, perjalanan |
+| Halaman Generasi | Hero, strip info, paragraf, dan 3 kartu di Persekutuan, Pelayanan Jemaat, Kids, Youth & Campus, Doa & Konseling (tautan sebaris: `[teks](alamat)`) |
 | Kontak & Situs | Alamat, WhatsApp, email, Instagram, YouTube, Maps, pesan pembuka WhatsApp |
 | Pustaka Foto | Unggah foto (otomatis diperkecil maks 1600 px) |
 | Riwayat | Daftar publikasi; **Pulihkan ke draf** untuk kembali ke versi lama |
@@ -36,6 +37,6 @@ Token hanya disimpan di browser Anda dan hanya dikirim ke `api.github.com`. Siap
 - Pesan pembuka WhatsApp dan email notifikasi registrasi tetap berbahasa Indonesia.
 
 ## 4. Untuk pengembang
-- Data: `content/{beranda,jadwal,kegiatan,tim,tentang,situs}.json`. Foto unggahan: `assets/uploads/`.
+- Data: `content/{beranda,jadwal,kegiatan,tim,tentang,situs,halaman}.json`. Foto unggahan: `assets/uploads/`.
 - Templat tampilan satu sumber: `cms-render.js` (dipakai build, situs, dan pratinjau). `cms.js` memuat JSON di halaman; HTML statis hasil build tetap ada sebagai cadangan/SEO.
 - Saat membangun ulang situs dari sumber, **ambil dulu `content/` dan `assets/uploads/` dari repo** agar suntingan CMS tidak tertimpa.
